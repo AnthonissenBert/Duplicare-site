@@ -1,0 +1,38 @@
+#barbier-image{
+    width: 180px;
+}
+
+
+#smulpaep-image{
+    width: 180px;
+}
+
+#foodtruckfestival-image{
+    width: 180px;
+}
+
+#carrefour-image{
+    width: 180px;
+}
+
+#quetzal-image{
+    width: 180px;
+    margin-bottom: 50px;
+}
+#Studant_original{
+    width: 180px;
+    
+}
+#Natalisschoonehidszorgen{
+    width: 180px;
+}
+div{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.link{
+    padding: 10px;
+}

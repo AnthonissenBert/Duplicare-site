@@ -1,0 +1,102 @@
+.drop-shasow{
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.anyClass {
+  height: 700px;
+  overflow-y: scroll;
+}
+
+footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.SchrijfJeIn{
+    text-align: center;
+}
+
+.SchrijfJeIn:link, .SchrijfJeIn:visited {
+  background-color: #0171BB;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10%;
+  text-align: center;
+    
+}
+
+.SchrijfJeIn:hover, .SchrijfJeIn:active {
+  background-color: #0079c9;
+    text-align: center;
+}
+
+.centerH1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+nav{
+    background-image: url(../Pictures/background1.jpg);
+    background-position: center;
+    height: 670px;
+    background-size: cover;
+}
+
+.goud{
+    color: #FDF202;
+}
+
+.keel{
+    color: #EC1A25;
+}
+
+.azuur{
+    color: #0171BB;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #4285F4; 
+}
+
+.copyright{
+    color: black;
+}
+
+@media (max-width: 600px) {
+    nav{
+        background-image: url(../Pictures/rsz_navigationbackground-phone.jpg);
+        background-position: center;
+        height: 644px;
+    }
+    
+    #basicExampleNav{
+        margin-top: 30px;
+    }
+    
+    #togglebutton{
+        margin: 5px;
+        background-color: black;
+    }
+    
+    nav{
+        width: auto;
+    }
+}
+
