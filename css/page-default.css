@@ -18,10 +18,6 @@ blockquote, p {
     width: 50%;
 }
 
-footer img {
-    width: 60px;
-}
-
 .row {
     display: flex;
     align-items: center;
@@ -33,5 +29,18 @@ footer img {
 }
 
 .column img{
+    padding: 5%;
+}
+
+table {
+    display: flex;
+    justify-content: center;;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.carousel {
     padding: 5%;
 }
