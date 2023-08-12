@@ -1,0 +1,32 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+  
+body{
+    /* The image used */
+    background-image: url("../assets/header/background.png");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+blockquote, h1 {
+    margin: 20%;
+    padding: 10%;
+}
+
+footer img {
+    width: 40px;
+}
