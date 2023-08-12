@@ -10,14 +10,28 @@ body, html {
 
 blockquote, p {
     padding: 10%;
+    text-align: justify;
+
 }
 
 #image {
-    float: right;
     width: 50%;
-    padding: 5%;
 }
 
 footer img {
     width: 60px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+  }
+  
+.column {
+    flex: 33.33%;
+    padding: 5px;
+}
+
+.column img{
+    padding: 5%;
 }
