@@ -47,6 +47,3 @@ table {
 section {
     padding: 5%;
 }
-
-.maintxt {position: relative;}
-.maintxt > img, .overlay-text {position: absolute;}
