@@ -33,7 +33,7 @@ blockquote, p {
 
 table {
     display: flex;
-    justify-content: center;;
+    justify-content: center;
 }
 
 .right-align {
@@ -46,4 +46,9 @@ table {
 
 section {
     padding: 5%;
+}
+
+table, p {
+    display: flex;
+    justify-content: center;
 }
