@@ -52,3 +52,7 @@ table, p {
     display: flex;
     justify-content: center;
 }
+
+.praesdium-lid {
+    width: 400px;
+}
