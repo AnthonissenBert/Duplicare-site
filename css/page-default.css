@@ -69,3 +69,15 @@ table, p {
 h2 {
     padding: 1%;
 }
+
+.club {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.column-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
