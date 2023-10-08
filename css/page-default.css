@@ -56,3 +56,12 @@ table, p {
 .praesdium-lid {
     width: 400px;
 }
+
+.bacchus {
+    width: 500px;
+}
+
+.bacchus-title {
+    display: flex;
+    justify-content: center;
+}
