@@ -95,4 +95,8 @@ h2 {
         justify-content: center;
         align-items: center;
     }
+
+    .praesdium-lid {
+        width: 100%;
+    }
 }
