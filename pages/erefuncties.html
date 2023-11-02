@@ -57,46 +57,33 @@
     </nav>
 </header>
   <section>
-    <table>
-      <tr>
-        <th>
-            <a class="btn" data-toggle="collapse" href="#PETER-HONORIS-CAUSA-1" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <img src="../assets/images/placeholder.jpg" loading="lazy" class="praesdium-lid">
-                <div class="collapse" id="PETER-HONORIS-CAUSA-1">
-                    <div class="card card-body card-text">
-                        <h5 class="text-dark">PETER HONORIS CAUSA</h5>
-                    </div>
-                </div>
-            </a>                
-        </th>
-      </tr>
-      <tr>
-        <th>
-            <a class="btn" data-toggle="collapse" href="#PETER-HONORIS-CAUSA-2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <img src="../assets/images/placeholder.jpg" loading="lazy" class="praesdium-lid">
-                <div class="collapse" id="PETER-HONORIS-CAUSA-2">
-                    <div class="card card-body card-text">
-                        <h5 class="text-dark">PETER HONORIS CAUSA</h5>
-                    </div>
-                </div>
-            </a>
-        </th>
-      </tr>
-      <tr>
-          <th>
-              <a class="btn" data-toggle="collapse" href="#ERE-CANTOR" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <img src="../assets/images/placeholder.jpg" loading="lazy" class="praesdium-lid">
-                  <div class="collapse" id="ERE-CANTOR">
-                      <div class="card card-body card-text">
-                          <h5 class="text-dark">ERE CANTOR</h5>
-                      </div>
-                  </div>
-              </a>
-          </th>
-      </tr>
-    </table>
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5><a class="text-dark" data-toggle="collapse" data-target="#PETER-HONORIS-CAUSA-1" aria-expanded="false" aria-controls="2013-2014">Peter Honoris Causa</a></h5>
+        </div>
+        <div id="PETER-HONORIS-CAUSA-1" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <h6 class="card-body">Gregory Van De Vloet</h6>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5><a class="text-dark" data-toggle="collapse" data-target="#PETER-HONORIS-CAUSA-2" aria-expanded="false" aria-controls="2013-2014">Peter Honoris Causa</a></h5>
+        </div>
+        <div id="PETER-HONORIS-CAUSA-2" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <h6 class="card-body">Rob Kouba</h6>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5><a class="text-dark" data-toggle="collapse" data-target="#ERE-CANTOR" aria-expanded="false" aria-controls="2013-2014">Ere cantor</a></h5>
+        </div>
+        <div id="ERE-CANTOR" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <h6 class="card-body">Lissa Smeuninx</h6>
+        </div>
+      </div>
   </section>
-  <footer class="bg-transparent text-center">
+  <footer class="bg-transparent text-center fixed-bottom">
     <div class="text-center text-dark text p-3">
       © 2013 - 2023 Duplicare |
       <a href="https://www.facebook.com/Duplicare" class="text-dark">FaceBook |</a>
