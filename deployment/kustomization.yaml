@@ -5,8 +5,9 @@ metadata:
   namespace: duplicare
 secretGenerator:
 - name: mysql-pass
+  namespace: duplicare
   literals:
-  - password=YOUR_PASSWORD
+  - password=password123
 resources:
   - mysql-deployment.yaml
   - wordpress-deployment.yaml
