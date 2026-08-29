@@ -4,4 +4,4 @@ Thumbs.db
 *.swp
 *.swo
 *~
-deployment/secrets.txt
+deployment/secrets.yaml
