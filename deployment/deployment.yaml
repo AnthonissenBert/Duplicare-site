@@ -1,0 +1,150 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim  # A claim for the database
+spec:
+  accessModes:
+    - ReadWriteOnce    # This volume can be mounted by one node at a time
+  resources:
+    requests:
+      storage: 20Gi     # Request 20 Gigabytes
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wordpress-pv-claim # A claim for the WP files
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi    # Request 20 Gigabytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql  # This is the stable DNS name WordPress will use to connect
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql   # Connects this service to Pods with the label "app: mysql"
+  type: ClusterIP  # IMPORTANT: Only reachable *inside* the cluster
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql # The label the Service is looking for
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0 # Using MySQL 8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-db-secret  # The secret we created
+              key: MYSQL_ROOT_PASSWORD # The specific key inside the secret
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-db-secret
+              key: MYSQL_PASSWORD
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-db-secret
+              key: MYSQL_USER
+        - name: MYSQL_DATABASE
+          value: "wordpress" # We'll hardcode the database name
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql # Mount the storage
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim # Use the PVC we created
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress # The name our Ingress will point to
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: wordpress
+  type: ClusterIP # We'll expose this with Ingress, so ClusterIP is perfect
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 2 # Let's run 2 replicas for high availability
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:latest
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: "mysql" # This is the name of the MySQL Service!
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-db-secret
+              key: MYSQL_USER
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-db-secret
+              key: MYSQL_PASSWORD
+        - name: WORDPRESS_DB_NAME
+          value: "wordpress" # Must match the MYSQL_DATABASE name
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html # Mount the storage for WP files
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wordpress-pv-claim # Use the other PVC
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wordpress-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: wordpress.home # Or whatever domain you want
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wordpress # Point to the WordPress Service
+            port:
+              number: 80 # On port 80              
