@@ -7,7 +7,7 @@ spec:
     - ReadWriteOnce    # This volume can be mounted by one node at a time
   resources:
     requests:
-      storage: 20Gi     # Request 20 Gigabytes
+      storage: 100Gi     # Request 100 Gigabytes
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -18,7 +18,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi    # Request 20 Gigabytes
+      storage: 100Gi    # Request 100 Gigabytes
 ---
 apiVersion: v1
 kind: Service
